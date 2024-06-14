@@ -1,0 +1,209 @@
+5.1 Given an array of numbers, find the index of the smallest array element (the pivot), for which the sums of all elements to the left and to the right are equal. The array may not be reordered.
+Example
+arr=[1,2,3,4,6]
+·         the sum of the first three elements, 1+2+3=6. The value of the last element is 6.
+·         Using zero based indexing, arr[3]=4 is the pivot between the two subarrays.
+·         The index of the pivot is 3.
+Constraints
+·         3 ≤ n ≤ 105
+·         1 ≤ arr[i] ≤ 2 × 104, where 0 ≤ i < n
+·         It is guaranteed that a solution always exists.
+The first line contains an integer n, the size of the array arr.
+Each of the next n lines contains an integer, arr[i], where 0 ≤ i < n.
+Code:
+a=int(input())
+s=[]
+for i in range(a):
+    b=int(input())
+    s.append(b)
+l=0
+r=0
+for i in range(0,a):
+    for j in range(0,i):
+        l=l+s[j]
+    for k in range(i+1,a):
+        r=r+s[k]
+    if(l==r):
+        print(i)
+    l=r=0
+
+5.2 Given an array A of sorted integers and another non negative integer k, find if there exists 2 indices i and j such that A[i] - A[j] = k, i != j.
+code:
+t=int(input())
+
+for i in range(0,t):
+    n=int(input())
+    l=[]
+    for j in range(0,n):
+        a=int(input())
+        l.append(a)
+    p=int(input())
+    for k in range(0,n):
+        c=0
+        for m in range(i+1,n):
+            if l[m]-l[k]==p:
+                c=1
+                print('1')
+                break
+        if c==1:
+            break
+    if c==0:
+        print('0')
+    #print('\n')
+
+5.3 Complete the program to count frequency of each element of an array. Frequency of a particular element will be printed once.
+code:
+n=int(input())
+l=[]
+s=[]
+for i in range(0,n):
+    a=int(input())
+    l.append(a)
+    if a not in s:
+        s.append(a)
+for i in s:
+    c=l.count(i)
+    print(i,"occurs",c,"times")
+
+5.4 Program to print all the distinct elements in an array. Distinct elements are nothing but the unique (non-duplicate) elements present in the given array.
+Input Format:
+First line take an Integer input from stdin which is array length n.
+Second line take n Integers which is inputs of array.
+code:
+n=int(input())
+x=[]
+for i in range(0,n):
+a=int(input())
+x.append(a)
+p=list(set(x))
+P=' '.join(str(i) for i in p)
+print(P) 
+
+5.5 Consider a program to insert an element / item in the sorted array. Complete the logic by filling up required code in editable section. Consider an array of size 10. The eleventh item is the data is to be inserted
+code:
+a=[]
+for i in range(0,11):
+    b=int(input())
+    a.append(b)
+#a.sort()
+print("ITEM to be inserted:",a[-1],sep='')
+a.sort()
+print("After insertion array is:")
+for i in a:
+    print(i)
+
+5.6 Determine the factors of a number (i.e., all positive integer values that evenly divide into a number) and then return the pth element of the list, sorted ascending. If there is no pth element, return 0.
+Constraints
+1 ≤ n ≤ 1015
+1 ≤ p ≤ 109
+The first line contains an integer n, the number to factor.
+The second line contains an integer p, the 1-based index of the factor to return.
+code:
+n=int(input())
+p=int(input())
+l=[]
+for i in range(1,n+1):
+    if n%i==0:
+        l.append(i)
+#print(l)       
+if p>len(l):
+    print("0")
+else:
+    print(l[p-1])
+
+5.7 Write a Python program to Zip two given lists of lists.
+code:
+m=int(input())
+n=int(input())
+l1=[]
+l2=[]
+c=1
+for i in range(0,m*n*2,2):
+    a=int(input())
+    b=int(input())
+    if c%2!=0:
+        l1.append(a)
+        l1.append(b)
+    else:
+        l2.append(a)
+        l2.append(b)
+    c=c+1
+l3=[]
+l3.append(l1)
+l3.append(l2)
+print(l3)
+
+5.8 Merge Two Sorted Arrays Without Duplication
+code:
+n1=int(input())
+l1=[]
+for i in range(0,n1):
+    a=int(input())
+    l1.append(a)
+n2=int(input())
+l2=[]
+for i in range(0,n2):
+    a=int(input())
+    l2.append(a)
+l3=[]
+l3.extend(l1)
+l3.extend(l2)
+a=list(set(l3))
+a.sort()
+for i in a:
+    print(i,end=' ')
+
+5.9 Write a program to print all the locations at which a particular element (taken as input) is found in a list and also print the total number of times it occurs in the list. The location starts from 1.
+code:
+n=int(input())
+element=[]
+while(n):
+element.append(int(input()))
+n-=1
+search=int(input())
+l=len(element)
+c=0
+for i in range(l):
+if(element[i]==search ):
+       print(f'{search} is present at location {i+1}.')
+       c=c+1
+else: 
+       continue
+if(c==0):
+            print(f'{search} is not present in the array.')
+else:
+      print(f'{search} is present {c} times in the array.')
+
+5.10 Write a Python program to check if a given list is strictly increasing or not. Moreover, If removing only one element from the list results in a strictly increasing list, we still consider the list true
+code:
+def check_increasing_or_decreasing(lst):
+    # Function to check if a list is strictly increasing or strictly decreasing
+    increasing = True
+    decreasing = True
+    for i in range(1, len(lst)):
+        if lst[i] > lst[i - 1]:
+            decreasing = False
+        elif lst[i] < lst[i - 1]:
+            increasing = False
+    return increasing or decreasing
+
+def check_strictly_increasing_with_removal(lst):
+    # Function to check if removing only one element makes the list strictly increasing or decreasing
+    for i in range(len(lst)):
+        temp_lst = lst[:i] + lst[i+1:]
+        if check_increasing_or_decreasing(temp_lst):
+            return True
+    return False
+
+# Input
+n = int(input())
+lst = []
+for _ in range(n):
+    lst.append(int(input()))
+
+# Check if the list is strictly increasing or decreasing
+if check_increasing_or_decreasing(lst) or check_strictly_increasing_with_removal(lst):
+    print("True")
+else:
+    print("False")
+
