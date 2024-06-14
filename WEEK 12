@@ -1,0 +1,110 @@
+12.1 Given an integer n, print true if it is a power of three. Otherwise, print false.
+An integer n is a power of three, if there exists an integer x such that n == 3x.
+code:
+import math
+n=int(input())
+i=0
+while True:
+    if 3**i==n:
+        print("True")
+        break
+    if 3**i>n:
+        print("False")
+        break
+    i=i+1
+
+12.2 Raghu owns a shoe shop with a varying inventory of shoe sizes. The shop caters to multiple customers who have specific size requirements and are willing to pay a designated amount for their desired shoe size. Raghu needs an efficient system to manage his inventory and calculate the total revenue generated from sales based on customer demands.
+
+Problem Statement:
+Develop a Python program that manages shoe inventory and processes sales transactions to determine the total revenue generated. The program should handle inputs of shoe sizes available in the shop, track the number of each size, and match these with customer purchase requests. Each transaction should only proceed if the desired shoe size is in stock, and the inventory should update accordingly after each sale.
+
+code:
+n=int(input())
+s=input().split()
+s=[int(i) for i in s]
+r=int(input())
+tc=0
+#l=np.zeroes((r,2))
+l=[]
+for i in range(0,r):
+    a=input().split()
+    a=[int(j) for j in a]
+    l.append(a)
+
+for i in range(0,r):
+    for j in range(0,n):
+        if l[i][0]==s[j]:
+            s[j]=0
+            tc=tc+l[i][1]
+            break
+print(tc)
+
+12.3 As a software engineer at SocialLink, a leading social networking application, you are tasked with developing a new feature designed to enhance user interaction and engagement. The company aims to introduce a system where users can form connections based on shared interests and activities. One of the feature's components involves analyzing pairs of users based on the activities they've participated in, specifically looking at the numerical difference in the number of activities each user has participated in.
+Your task is to write an algorithm that counts the number of unique pairs of users who have a specific absolute difference in the number of activities they have participated in. This algorithm will serve as the backbone for a larger feature that recommends user connections based on shared participation patterns.
+Problem Statement
+Given an array activities representing the number of activities each user has participated in and an integer k, your job is to return the number of unique pairs (i, j) where activities[i] - activities[j] = k, and i < j. The absolute difference between the activities should be exactly k.
+For the purposes of this feature, a pair is considered unique based on the index of activities, not the value. That is, if there are two users with the same number of activities, they are considered distinct entities.
+code:
+n=int(input())
+s=input().split()
+s=[int(i) for i in s]
+k=int(input())
+l=[]
+c=0
+for i in range(0,n):
+    for j in range(i+1,n):
+        if abs(s[i]-s[j])==k:
+            c=c+1
+            l.append([s[i],s[j]])
+print(c)
+
+12.4 Background:
+Rose manages a personal library with a diverse collection of books. To streamline her library management, she needs a program that can categorize books based on their genres, making it easier to find and organize her collection.
+
+Problem Statement:
+Develop a Python program that reads a series of book titles and their corresponding genres from user input, categorizes the books by genre using a dictionary, and outputs the list of books under each genre in a formatted manner
+
+code:
+d=dict()
+try:
+    while True:
+        a=input()
+    #a=a.split(',')
+        a=a.split(',')
+        if a[1] not in d:
+            d[a[1]]=[a[0]]
+        else:
+            d[a[1]].append(a[0])
+        
+except EOFError:
+    for i in d:
+        print(i.strip(),':',sep='',end=' ')
+        j=-1
+        for j in range(0,len(d[i])-1):
+            print(d[i][j],end=', ')
+        print(d[i][j+1])
+    #print()'''
+
+12.5 Dr. John Wesley maintains a spreadsheet with student records for academic evaluation. The spreadsheet contains various data fields including student IDs, marks, class names, and student names. The goal is to develop a system that can calculate the average marks of all students listed in the spreadsheet.
+
+Problem Statement:
+Create a Python-based solution that can parse input data representing a list of students with their respective marks and other details, and compute the average marks. The input may present these details in any order, so the solution must be adaptable to this variability.
+code:
+n=int(input())
+s=input().split()
+m=0
+#print(s)
+for i in range(0,4):
+    if s[i]=='MARKS':
+        break
+#print(i)
+for j in range(0,n):
+    s1=input().split()
+    #print(s1)
+    m=m+float(s1[i])
+if n==0:
+    print('0.00')
+else:
+    c=m/n
+    print("%.2f"%c)
+
