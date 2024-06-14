@@ -1,0 +1,120 @@
+9.1 A sentence is a string of single-space separated words where each word consists only of lowercase letters.A word is uncommon if it appears exactly once in one of the sentences, and does not appear in the other sentence.
+Given two sentences s1 and s2, return a list of all the uncommon words. You may return the answer in any order.
+code:
+a=input()
+b=input()
+s=a+' '+b
+z=s.split()
+d=dict()
+for i in range(0,len(z)):
+    if z[i] not in d:
+        d[z[i]]=1
+        for j in range(i+1,len(z)):
+            if z[i]==z[j]:
+                d[z[i]]=d[z[i]]+1
+    
+for i in d:
+    if d[i]==1:
+        print(i,end=' ')
+
+9.2 Give a dictionary with value lists, sort the keys by summation of values in value list
+code:
+n=int(input())
+d=dict()
+
+for j in range(0,n):
+    s=input()
+    z=s.split()
+    d[z[0]]=0
+    for i in range(1,len(z)):
+        d[z[0]]=d[z[0]]+int(z[i])
+
+l=list(d.values())
+l.sort()
+
+for i in l:
+    for j in d:
+        if i==d[j]:
+            print(j,d[j])
+
+9.3 Given an array of names of candidates in an election. A candidate name in the array represents a vote cast to the candidate. Print the name of candidates received Max vote. If there is tie, print a lexicographically smaller name.
+code:
+n=int(input())
+d=dict()
+
+for i in range(0,n):
+    a=input()
+    if a not in d:
+        d[a]=1
+    else:
+        d[a]=d[a]+1
+l=list(d.values())
+a=max(l)
+l1=[]
+for i in d:
+    if d[i]==a:
+        l1.append(i)
+print(min(l1))
+
+9.4 Create a student dictionary  for n students with the student name as key and their test mark assignment mark and lab mark as values. Do the following computations and display the result.
+1.Identify the student with the  highest average score
+2.Identify the student who as the highest Assignment marks
+3.Identify the student with the Lowest lab marks
+4.Identify the student with the lowest average score
+Note:
+If more than one student has the same score display all the student names
+code:
+def dv(a,b):
+    l=[]
+    for i in a:
+        if a[i]==b:
+            l.append(i)
+    l.sort()
+    for i in l:
+        print(i,end=' ')
+    print()
+n=int(input())
+d1=dict()
+d2=dict()
+d3=dict()
+for i in range(0,n):
+    s=input()
+    z=s.split()
+    d1[z[0]]=int(z[1])+int(z[2])+int(z[3])
+    d2[z[0]]=int(z[2])
+    d3[z[0]]=int(z[3])
+    
+l1=list(d1.values())
+max1=max(l1)
+min1=min(l1)
+l2=list(d2.values())
+max2=max(l2)
+l3=list(d3.values())
+min3=min(l3)
+dv(d1,max1)
+dv(d2,max2)
+dv(d3,min3)
+dv(d1,min1) 
+
+9.5 In the game of Scrabble™, each letter has points associated with it. The total score of a word is the sum of the scores of its letters. More common letters are worth fewer points while less common letters are worth more points. 
+Write a program that computes and displays the Scrabble™ score for a word. Create a dictionary that maps from letters to point values. Then use the dictionary to compute the score.
+A Scrabble™ board includes some squares that multiply the value of a letter or the value of an entire word. We will ignore these squares in this exercise.
+The points associated with each letter are shown below:
+Points Letters
+1 A, E, I, L, N, O, R, S, T and U
+2 D and G
+3 B, C, M and P
+4 F, H, V, W and Y
+5 K
+8 J and X
+10 Q and Z
+code:
+s=input()
+d={1:'AEILNORSTU',2:'DG',3:'BCM',4:'FHVWY',5:'K',8:'JX',10:'QZ'}
+s1=0
+for i in s:
+    for j in d.keys():
+        if i in d[j]:
+            s1=s1+j
+print(s,"is worth",s1,"points.")
+ 
